@@ -1,7 +1,6 @@
 #include "sm4.h"
 #include "benchmark.h"
 #include "sm4_cbc.h"
-
 #define BENCHS 10
 #define ROUNDS 100000
 
@@ -160,6 +159,14 @@ int main()
     printf("10MB: ");
     test_sm4_cbc_correctness(655360);
 
+    // Perform performance test
+    printf(">> Performing cbc performance test...\n");
+    printf("64B:\n");
+    test_sm4_cbc_performance(4, 100000);
+    printf("2KB:\n");
+    test_sm4_cbc_performance(128, 100000);
+    printf("10MB:\n");
+    test_sm4_cbc_performance(655360, 100);
     return 0;
 }
 
